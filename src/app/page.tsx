@@ -1,17 +1,21 @@
 "use client";
 import Image from "next/image";
 import {useEffect, useState} from "react";
-export default function Home() {
+import {config} from "dotenv";
+config();
 
+const backend_url = process.env.NEXT_PUBLIC_BACKEND_URL ? process.env.NEXT_PUBLIC_BACKEND_URL : "http://localhost:5000";
+
+export default function Home() {
 
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    fetch('http://localhost:5000/') // Make GET request to backend
+    fetch(backend_url) // Make GET request to backend
         .then(response => response.json())   // Convert response to JSON
         .then(data => setMessage(data.message)) // Update state with received data
         .catch(error => console.error('Error fetching data:', error));
-  }, []);
+  });
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
