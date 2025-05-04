@@ -3,7 +3,8 @@ name: Deploy Frontend to S3
 on:
   push:
     branches:
-      - main  # or whatever branch You use for deployment
+      - main
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -12,7 +13,7 @@ jobs:
     timeout-minutes: 10
 
     env:
-      AWS_REGION: us-east-1  # Change to match Your region
+      AWS_REGION: us-east-1
       S3_BUCKET: jeremiah-prod-static
 
     steps:
