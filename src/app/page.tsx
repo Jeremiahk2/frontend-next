@@ -13,7 +13,7 @@ export default function Home() {
   useEffect(() => {
     fetch(backend_url + "/api") // Make GET request to backend
         .then(response => response.json())   // Convert response to JSON
-        .then(data => setMessage(data.message)) // Update state with received data
+        .then(data => setMessage(data.email)) // Update state with received data
         .catch(error => console.error('Error fetching data:', error));
   });
 
