@@ -11,9 +11,9 @@ export default function Home() {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    fetch(backend_url + "/api") // Make GET request to backend
+    fetch(backend_url + "/api/users") // Make GET request to backend
         .then(response => response.json())   // Convert response to JSON
-        .then(data => setMessage(data.email)) // Update state with received data
+        .then(data => setMessage(data[0].Username)) // Update state with received data
         .catch(error => console.error('Error fetching data:', error));
   });
 
